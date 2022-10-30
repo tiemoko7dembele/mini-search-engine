@@ -82,6 +82,7 @@ public class CLI
             } else {
                 value = arg.trim();
                 argMap.put(key, value);
+                System.out.println("Values "+value);
             }
             iArg++;
         }
@@ -162,14 +163,14 @@ public class CLI
                     .getFileName().toString();
             document = persister.getDocument(filename.replaceFirst("[.][^.]+$", ""));
 
-            Lemmatizer lemmatizer;
-            File f = new File(stopWordsFile);
-            if (stopWordsFile!=null && f.exists() && !f.isDirectory()) {
-                lemmatizer = new Lemmatizer(stopWordsFile);
-            }else if (stopWordsFile.equals("none")){
-                lemmatizer = new Lemmatizer(false);
-            }else {
-                lemmatizer = new Lemmatizer(DEFAULT_STOP_WORDS_FILE_PATH);
+            Lemmatizer lemmatizer = new Lemmatizer(DEFAULT_STOP_WORDS_FILE_PATH);
+            if(stopWordsFile!=null){
+                File f = new File(stopWordsFile);
+                if (f.exists() && !f.isDirectory()) {
+                    lemmatizer = new Lemmatizer(stopWordsFile);
+                }else if (stopWordsFile.equals("none")){
+                    lemmatizer = new Lemmatizer(false);
+                }
             }
 
             if(document==null){
