@@ -1,5 +1,6 @@
 # Mini Full-Text Search Engine
 
+![Dassault Systèmes](https://github.com/[tiemoko7dembele]/[mini-search-engine]/blob/[master]/docs/images/dassaultsystemes.png?raw=true)
 ## Architecture 
 
 
