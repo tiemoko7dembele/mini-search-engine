@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cli" />
         <module name="core" />
+        <module name="search-engine-cli" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cli" target="11" />
       <module name="ui" target="11" />
     </bytecodeTargetLevel>
   </component>

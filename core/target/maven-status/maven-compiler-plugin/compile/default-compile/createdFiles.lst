@@ -1,0 +1,6 @@
+com/dassaultsystemes/searchengine/persistence/Persister.class
+com/dassaultsystemes/searchengine/lemmatization/Lemmatizer.class
+com/dassaultsystemes/searchengine/CoreApp.class
+com/dassaultsystemes/searchengine/common/Constants.class
+com/dassaultsystemes/searchengine/models/Document.class
+com/dassaultsystemes/searchengine/exceptions/DocumentNotTokenizedException.class

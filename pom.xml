@@ -6,7 +6,6 @@
   <artifactId>search-engine</artifactId>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>cli</module>
     <module>core</module>
   </modules>
   <packaging>pom</packaging>
@@ -17,11 +16,31 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>11</java.version>
-    <start-class>com.dassaultsystemes.searchengine.searchengine.App</start-class>
-    <root.dir>${project.basedir}</root.dir>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
   </properties>
+
+  <profiles>
+    <!-- Allow to run the cli profile. mvn clean install -Pcli -->
+    <profile>
+      <id>cli</id>
+      <modules>
+        <module>cli</module>
+      </modules>
+    </profile>
+
+    <!-- By default, compile and run test for core and cli -->
+    <profile>
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>core</module>
+        <module>cli</module>
+      </modules>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
@@ -31,22 +50,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <build>
-    <plugins>
-      <plugin>
-        <!-- Build an executable JAR -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.3.0</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <mainClass>com.dassaultsystemes.searchengine.searchengine.App</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

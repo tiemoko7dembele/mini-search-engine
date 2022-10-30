@@ -1,8 +1,7 @@
 package com.dassaultsystemes.searchengine;
 
 /**
- * Hello world!
- *
+ * Search Engine Core App
  */
 public class CoreApp
 {
