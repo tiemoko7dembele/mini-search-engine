@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 import static com.dassaultsystemes.searchengine.common.Constants.DEFAULT_STOP_WORDS_FILE_PATH;
 
 public class Lemmatizer {
-    private static final Pattern PATTERN = Pattern.compile("\\P{IsAlphabetic}+");
-
+    private static final Pattern ALPHABETIC_PATTERN = Pattern.compile("\\P{IsAlphabetic}+");
+    private static final Pattern NUMERIC_PATTERN = Pattern.compile("\\P{IsDigit}+");
     private String stopWordsFilePath;
 
     private boolean removeStopWords = true;
@@ -37,12 +37,22 @@ public class Lemmatizer {
             stopWords = new HashSet<>();
         }
 
-        for(String word: PATTERN.split(textLine)) {
+        //Alphabetic
+        for(String word: ALPHABETIC_PATTERN.split(textLine)) {
             if(!word.isEmpty() && !stopWords.contains(word))
                 lemmas.add(Normalizer.normalize(word, Normalizer.Form.NFKD)
                         .toLowerCase()
                         .replaceAll("[\\p{InCombiningDiacriticalMarks}]", ""));
         }
+
+        //Numeric
+        for(String word: NUMERIC_PATTERN.split(textLine)) {
+            if(!word.isEmpty() && !stopWords.contains(word))
+                lemmas.add(Normalizer.normalize(word, Normalizer.Form.NFKD)
+                        .toLowerCase()
+                        .replaceAll("[\\p{InCombiningDiacriticalMarks}]", ""));
+        }
+
         return lemmas;
     }
 

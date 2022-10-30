@@ -28,7 +28,7 @@ To build, run :
 ```
 mvn clean install 
 ```
-Or 
+or 
 ```
 mvn clean install -DskipTests=true -Pcli 
 ```
@@ -50,9 +50,10 @@ java -jar cli/target/search-engine-cli.jar --mode console
 
  ### More about Arguments  
   ```
- --mode console 
  --mode <execution-mode> --input-file <input-file> --to-search <text-to-search> [options]
- --version 
+ ```
+ ```
+  --version 
  ```
 
      [REQUIRED]                       
