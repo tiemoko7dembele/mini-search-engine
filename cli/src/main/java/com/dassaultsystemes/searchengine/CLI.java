@@ -26,10 +26,19 @@ public class CLI
 
     private static final String usageCLI = "Usage:\r" + APP_NAME + "\n"
             + " --mode console \r\n"
-            + " --mode batch --input-file <input-file> --to-search <text-to-search-in-file> [options]\r\n"
+            + " --mode <execution-mode> --input-file <input-file> --to-search <text-to-search> [options]\r\n"
             + " --version  \r\n" + "\r\n"
+            + "     [REQUIRED]                       \r\n"
+            + "     execution-mode:             \"console\" or \"batch\"\r\n\n"
             + "     input-file:                 Uri of \"txt\" or any other file \r\n"
-            + "                                 File System Storage\r\n";
+            + "                                 File System Storage\r\n"
+            + "                                 Argument required in \"batch\" mode \r\n\n"
+            + "     text-to-search:             Full text to search in the file \r\n"
+            + "                                 UTF-8\r\n"
+            + "                                 Argument required in \"batch\" mode \r\n\n"
+            + "     [Optional]                       \r\n"
+            + "     stop-words-file:            Uri of \"txt\" or any other file that contains all stop words (only one by line)\r\n"
+            + "                                 File System Storage\r\n\n";
 
     private static final String welcomeCLI =
             "$$$$$$$\\                                                    $$\\   $$\\            $$$$$$\\                        $$\\                                                 \n" +
@@ -49,14 +58,12 @@ public class CLI
     // /Users/tiemoko7dembele/Documents/dassault/paris.txt
     // /Users/tiemoko7dembele/Documents/dassault/example.txt
     public static void main( String[] args ) throws IOException, DocumentNotTokenizedException {
-        System.out.println(welcomeCLI);
-
         //Load arguments values
-        /* No args
+        // No args
         if (args.length == 0) {
             System.out.println(usageCLI);
             System.exit(0);
-        }*/
+        }
 
         // --version
         if ((args.length == 1) && (args[0].compareTo("--version") == 0)) {
@@ -90,6 +97,8 @@ public class CLI
 
         // --mode
         if (mode.equals(CONSOLE.toString().toLowerCase())) {
+            System.out.println(welcomeCLI);
+
             Scanner scan = new Scanner(System.in);
             System.out.print("Enter your file path : ");
             String inputFilePath = scan.nextLine().trim();
@@ -143,6 +152,8 @@ public class CLI
                 }
             }
         }else if(mode.equals(BATCH.toString().toLowerCase())){
+            System.out.println(welcomeCLI);
+
             File file = new File(inputFile);
             if(!file.exists() || file.isDirectory() || inputFile==null || toSearch==null) {
                 System.out.println("Please, check your --input-file and/or --to-search value");
