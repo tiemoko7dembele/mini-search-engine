@@ -18,6 +18,7 @@ public class Persister implements Serializable {
 
     public Document getDocument(String filename) throws IOException {
         File folder = new File(Constants.STORAGE+"/data/tokens");
+        System.out.println(Constants.ROOT_DIR);
         File[] listOfFiles = folder.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {

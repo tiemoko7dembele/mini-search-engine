@@ -1,6 +1,8 @@
 # Mini Full-Text Search Engine
 
-![Dassault Systèmes](https://github.com/[tiemoko7dembele]/[mini-search-engine]/blob/[master]/docs/images/dassaultsystemes.png?raw=true)
+![Dassault Systèmes](https://github.com/tiemoko7dembele/mini-search-engine/blob/master/docs/images/dassaultsystemes.png?raw=true)
+
+
 ## Architecture 
 
 
@@ -69,11 +71,12 @@ java -jar cli/target/search-engine-cli.jar --mode console
                                  File System Storage
 
 
-## Setup 
+## Setting
 - JDK : Amazon corretto-11.0.17
 
 
 ## Features to implement
 - Get input file from web URL
+- Number lemmatization
 
 

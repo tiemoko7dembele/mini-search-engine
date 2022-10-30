@@ -55,8 +55,6 @@ public class CLI
 
     static Persister persister = new Persister();
 
-    // /Users/tiemoko7dembele/Documents/dassault/paris.txt
-    // /Users/tiemoko7dembele/Documents/dassault/example.txt
     public static void main( String[] args ) throws IOException, DocumentNotTokenizedException {
         //Load arguments values
         // No args
