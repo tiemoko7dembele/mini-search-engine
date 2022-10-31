@@ -25,7 +25,6 @@ public class CLI
     private static final String stopExecution = "exit()";
 
     private static final String usageCLI = "Usage:\r" + APP_NAME + "\n"
-            + " --mode console \r\n"
             + " --mode <execution-mode> --input-file <input-file> --to-search <text-to-search> [options]\r\n"
             + " --version  \r\n" + "\r\n"
             + "     [REQUIRED]                       \r\n"
