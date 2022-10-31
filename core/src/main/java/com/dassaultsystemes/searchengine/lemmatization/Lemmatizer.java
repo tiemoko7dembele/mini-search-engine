@@ -53,6 +53,9 @@ public class Lemmatizer {
                         .replaceAll("[\\p{InCombiningDiacriticalMarks}]", ""));
         }
 
+        //Search root word
+        //Search similar/affiliated words
+
         return lemmas;
     }
 

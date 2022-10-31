@@ -72,18 +72,18 @@ public class CLI
         HashMap<String, String> argMap = new HashMap<>();
         int iArg = 0;
         String key = null;
-        String arg, value;
+        String arg;
+        String value = "";
 
         while (iArg < args.length) {
             arg = args[iArg];
             if (arg.startsWith("--")) {
                 key = arg.trim();
-                argMap.put(key, "");
+                value = "";
             } else {
-                value = arg.trim();
-                argMap.put(key, value);
-                System.out.println("Values "+value);
+                value += arg.trim()+" ";
             }
+            argMap.put(key, value);
             iArg++;
         }
 
@@ -138,12 +138,15 @@ public class CLI
                 if(textToSearch.equals(stopExecution)) break;
 
                 //Do search
+                long startTime = System.currentTimeMillis();
                 List<Integer> numberOfFoundLines = document.searchText(textToSearch);
-                List<String> linesFound = document.foundLines(new HashSet<>(numberOfFoundLines));
+                long stopTime = System.currentTimeMillis();
+                System.out.println("Results found in " + (stopTime - startTime) + " ms");
                 if(numberOfFoundLines==null || numberOfFoundLines.isEmpty()){
                     System.out.println("Not found !");
                 }else{
                     System.out.println("Words found in : "+numberOfFoundLines);
+                    List<String> linesFound = document.foundLines(new HashSet<>(numberOfFoundLines));
                     System.out.println("###### WORDS FOUND IN THESE LINES ######");
                     for(String line : linesFound){
                         System.out.println(line);
@@ -151,11 +154,14 @@ public class CLI
                 }
             }
         }else if(mode.equals(BATCH.toString().toLowerCase())){
-            System.out.println(welcomeCLI);
-
-            File file = new File(inputFile);
-            if(!file.exists() || file.isDirectory() || inputFile==null || toSearch==null) {
-                System.out.println("Please, check your --input-file and/or --to-search value");
+            if(inputFile!=null) {
+                File file = new File(inputFile);
+                if (!file.exists() || file.isDirectory() || toSearch == null || toSearch.trim().isEmpty()) {
+                    System.out.println("Please, check your --input-file and/or --to-search value");
+                    System.exit(0);
+                }
+            }else{
+                System.out.println("No <input-file> given.");
                 System.exit(0);
             }
 
@@ -185,12 +191,15 @@ public class CLI
             }
 
             //Do search
+            long startTime = System.currentTimeMillis();
             List<Integer> numberOfFoundLines = document.searchText(toSearch);
+            long stopTime = System.currentTimeMillis();
+            System.out.println("Results found in " + (stopTime - startTime) + " ms");
             if(numberOfFoundLines==null || numberOfFoundLines.isEmpty()){
                 System.out.println("Not found !");
             }else{
-                List<String> linesFound = document.foundLines(new HashSet<>(numberOfFoundLines));
                 System.out.println("Words found in : "+numberOfFoundLines);
+                List<String> linesFound = document.foundLines(new HashSet<>(numberOfFoundLines));
                 System.out.println("###### WORDS FOUND IN THESE LINES ######");
                 for(String line : linesFound){
                     System.out.println(line);
@@ -201,7 +210,6 @@ public class CLI
             System.exit(0);
         }
 
-        System.out.println( "Stopping ..." );
-        System.out.println( "SEARCH ENGINE IS DOWN" );
+        System.out.println("END OF SEARCH");
     }
 }

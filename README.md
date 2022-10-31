@@ -48,6 +48,9 @@ To use this module in "console" mode, run :
 java -jar cli/target/search-engine-cli.jar --mode console
 ```
 
+To end the console mode, type : `exit()`
+
+
  ### More about Arguments  
   ```
  --mode <execution-mode> --input-file <input-file> --to-search <text-to-search> [options]
