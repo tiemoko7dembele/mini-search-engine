@@ -209,6 +209,6 @@ public class CLI
             System.exit(0);
         }
 
-        System.out.println("END OF SEARCH");
+        System.out.println("\nEND OF SEARCH\n");
     }
 }
