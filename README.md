@@ -81,6 +81,5 @@ To end the console mode, type : `exit()`
 
 ## Features to implement
 - Get input file from web URL
-- Number lemmatization
 
 
