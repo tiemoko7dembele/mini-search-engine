@@ -39,7 +39,7 @@ public class Document {
     public List<Integer> searchText(String textToSearch) throws FileNotFoundException {
         //Lemmatization of text to search
         List<String> wordsToSearch = lemmatizer.lemmatize(textToSearch);
-        if(wordsToSearch.isEmpty()) return new ArrayList<>(); // not consider stop words
+        if(wordsToSearch.isEmpty()) return new ArrayList<>(); // ignore stop words
 
         //Sorted by frequency
         HashMap<String, Integer> orderedWordsToSearch = new HashMap<String, Integer>();
@@ -150,12 +150,6 @@ public class Document {
         }
         return originalFoundLines;
     }
-
-    public void save(){
-        // save original file
-        // save tokenize hashMap
-    }
-
 
     public String getFilepath() {
         return filepath;

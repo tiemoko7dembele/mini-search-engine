@@ -63,26 +63,4 @@ public class Persister implements Serializable {
             Files.write(filepath, lines, StandardOpenOption.CREATE);
         }
     }
-
-    /*public List<String> readLines(String filename, List<Integer> numberOfFoundLines) {
-        List<String> originalFoundLines = new ArrayList<>();
-        try{
-            Scanner scan = new Scanner(new File(DATABASE +"/originalFiles/"+filename+".txt"));
-            String line = "";
-            int numberOfLine = 0;
-            int lengthOfFoundLines = 0;
-            while(scan.hasNext()){
-                numberOfLine++;
-                line = scan.nextLine();
-                if(numberOfFoundLines.contains(numberOfLine)){
-                    originalFoundLines.add(line);
-                    lengthOfFoundLines++;
-                }
-                if(lengthOfFoundLines==numberOfFoundLines.size()) break;
-            }
-        }catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return originalFoundLines;
-    }*/
 }
